@@ -1,0 +1,5 @@
+APScheduler
+flask
+beautifulsoup4
+whoosh
+requests

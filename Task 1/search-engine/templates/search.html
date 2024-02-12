@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Coventry Scholar Search</title>
+    <meta charset="utf-8" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css')}}"
+    />
+  </head>
+
+  <body>
+    <img
+      class="searchEngine"
+      src="{{url_for('photos', filename='search-engine.png')}}"
+      alt="Search Engine"
+    />
+    <div class="searchBox">
+      <form action="/search" method="GET">
+        <input
+          class="searchInput"
+          type="text"
+          name="query"
+          placeholder="Search"
+        />
+        <button class="searchButton" type="submit" value="Search">
+          <i class="material-icons"> search </i>
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Search Results</title>
+    <meta charset="utf-8" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css')}}"
+    />
+  </head>
+
+  <body>
+    <img
+      class="coventryLogo"
+      src="{{url_for('photos', filename='coventry.png')}}"
+      alt="Coventry Logo"
+    />
+    <div class="searchBoxResult">
+      <form action="/search" method="GET">
+        <input
+          class="searchInputResult"
+          type="text"
+          name="query"
+          placeholder="Search"
+        />
+        <button class="searchButton" type="submit" value="Search">
+          <i class="material-icons"> search </i>
+        </button>
+      </form>
+    </div>
+
+    <div class="searchResults">
+      <h3 class="resultHeader">Results for {{query}}</h3>
+      <table>
+        <tr>
+          <th>Title</th>
+          <th>Authors</th>
+          <th>Year</th>
+          <th>Publication Url</th>
+          <th>Profile Url</th>
+        </tr>
+        {% for result in search_results %}
+        <tr>
+          <td>{{ result.title }}</td>
+          <td>{{ result.authors }}</td>
+          <td>{{ result.year }}</td>
+          <td>
+            {% if result.publication_url != "N/A" %}
+            <a href="{{ result.publication_link }}">Link</a>
+            {% else %} N/A {% endif %}
+          </td>
+          <td><a href="{{ result.author_profile_link }}">Link</a></td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </body>
+</html>
